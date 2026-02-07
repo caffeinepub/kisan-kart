@@ -1,0 +1,218 @@
+{
+  "kind": "build_request",
+  "title": "Kisan Kart — Farmer Marketplace MVP",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create the core frontend application structure for “Kisan Kart” with primary navigation and pages: Home, Browse Listings, Create Listing, My Listings, and About/Help.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App name “Kisan Kart” is visible in the header and page titles.",
+        "Users can navigate between Home, Browse Listings, Create Listing, My Listings, and About/Help without broken links.",
+        "All user-facing text is in English."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a coherent, distinctive visual theme for Kisan Kart (colors, typography, spacing, components) and apply it consistently across all pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Theme is consistent across header, buttons, inputs, cards, and page layouts.",
+        "Theme does not rely on blue/purple as the primary brand palette.",
+        "UI is readable and usable on both mobile and desktop sizes."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement backend data model and APIs to support marketplace listings, including creating, reading, updating, and deleting listings. Each listing must include: id, title, description, category, price (number), unit (text), location (text), images (optional URLs or asset references), owner (principal), createdAt, updatedAt, and status (active/inactive).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes methods to create a listing, list all active listings, get listing by id, update listing (owner-only), and delete/deactivate listing (owner-only).",
+        "Listing ownership is enforced so only the creator can edit/delete their listings.",
+        "Timestamps are set/updated appropriately on create/update."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Connect the frontend to the backend APIs to enable end-to-end listing workflows: create listing form submission, browse listings, view listing details, and manage the current user’s listings (edit/deactivate).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A user can create a listing from the Create Listing page and see it appear in Browse Listings.",
+        "A user can open a listing detail view from Browse Listings.",
+        "My Listings shows only listings created by the current user and allows editing/deactivation.",
+        "Frontend uses React Query for fetch/mutation flows with loading and error states."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add browsing utilities on the frontend: search by keyword (title/description), filter by category, and sort by newest and price (low-to-high / high-to-low).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Browse Listings supports keyword search, category filtering, and sorting controls.",
+        "Controls update the visible results and have an empty-state message when no results match.",
+        "State changes do not cause UI crashes and show appropriate loading indicators."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement authentication using Internet Identity to identify the listing owner and to gate access to Create Listing and My Listings pages (prompt to sign in when not authenticated).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Unauthenticated users can browse listings but are prompted to sign in for Create Listing and My Listings.",
+        "Authenticated principal is used when creating listings and determining ownership in My Listings.",
+        "Sign in and sign out actions update the UI state correctly."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add a listing detail page that includes a “Contact” section showing seller-provided contact text (e.g., phone/WhatsApp text field) stored in the listing, without integrating external messaging APIs.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Create/Edit listing includes an optional contact field saved with the listing.",
+        "Listing detail page displays the contact field when provided, otherwise hides it or shows 'Not provided'.",
+        "No external messaging, SMS, WhatsApp, or chat integration is implemented."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Add basic client-side and backend-side validation for listing creation/editing (required fields, price >= 0, length limits) and display clear inline error messages in English.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Required fields prevent submission and show inline error messages.",
+        "Backend rejects invalid payloads and returns errors that the UI renders clearly.",
+        "Price cannot be negative; overly long text fields are rejected or constrained."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add seed/sample data support for local development so the Browse Listings page can display a few example listings when running locally (without requiring manual entry every time).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a way to populate a small set of sample listings for development/testing.",
+        "Sample data does not overwrite real user data unintentionally (e.g., only runs in a controlled/dev-only way)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Render generated static brand assets (logo and a simple hero banner) from frontend/public/assets/generated and use them in the header and Home page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create a app for formers name is kisan kart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images are stored under frontend/public/assets/generated.",
+        "Header uses the logo asset.",
+        "Home page includes the hero banner asset and maintains responsive layout."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (all logic in the main actor file).",
+    "Do not modify files in frontend immutable paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui); compose and use them as-is.",
+    "No external databases or third-party auth providers; only Internet Identity for auth.",
+    "No real-time features (no WebSockets), and no external messaging integrations."
+  ],
+  "nonGoals": [
+    "Payments/checkout, invoicing, or subscriptions.",
+    "Order management, delivery tracking, or logistics features.",
+    "Admin dashboard and moderation workflows beyond owner-only listing management.",
+    "External integrations (WhatsApp API, SMS, email sending, maps/GPS)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Simple agricultural marketplace logo mark with text “Kisan Kart”, earthy tones (kisan-kart-logo.dim_512x512.png)",
+      "Wide hero banner illustration featuring farmers, crops, and a small marketplace stall in a clean flat style (kisan-kart-hero.dim_1600x600.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Use English for any user-facing text"
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T10:04:19.804Z",
+  "summary": "Diff adds a React/TanStack Router + React Query frontend structure (header/nav, auth gating, listing UI components, filtering/sorting utilities) and a Motoko backend actor with listing types and validation. However, several explicit MVP requirements cannot be confirmed from the truncated backend and missing/omitted frontend/public files (e.g., full CRUD APIs, updatedAt, seed data, and generated brand assets/hero usage). The diff also introduces unrequested user profile + access-control/admin-token functionality.",
+  "missing_requirements": [
+    {
+      "id": "REQ-3",
+      "requirement": "Listing model includes updatedAt and status (active/inactive), and backend exposes full CRUD: create, list all active, get by id, update (owner-only), delete/deactivate (owner-only) with timestamps updated appropriately.",
+      "reason": "In the visible backend snippet, Listing includes createdAt and isActive but no updatedAt field, and only createListing is shown; methods for getActiveListings/getListing/update/delete/deactivate are not evidenced in the truncated diff.",
+      "evidence": [
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Listing detail page displays the saved contact field (or hides/shows 'Not provided').",
+      "reason": "Although listing/contactInfo is present in the backend types and listing cards show a 'Contact available' badge, the actual ListingDetailPage UI behavior is not shown in the diff summary.",
+      "evidence": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/listings/ListingCard.tsx",
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Seed/sample data support for local development that populates a few example listings in a controlled/dev-only way.",
+      "reason": "No seed/population method or dev-only initialization is evidenced in the provided backend snippet or any other shown file.",
+      "evidence": [
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Generated logo and hero banner images are stored under frontend/public/assets/generated and used in header (logo) and Home page (hero banner).",
+      "reason": "Header references the logo path, but the actual generated image files under frontend/public/assets/generated are not shown, and HomePage usage of the hero banner is not evidenced in the diff summary.",
+      "evidence": [
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile system (UserProfile model, profile get/save APIs) and mandatory profile setup modal prompting for name.",
+      "reason": "BuildRequest focuses on listings marketplace MVP and does not request user profiles or a profile onboarding flow.",
+      "evidence": [
+        "backend/main.mo (truncated)",
+        "frontend/src/components/profile/ProfileSetupModal.tsx",
+        "frontend/src/features/profile/profileQueries.ts",
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/components/layout/Header.tsx"
+      ]
+    },
+    {
+      "description": "Custom access control/admin initialization using a secret URL parameter (caffeineAdminToken) and authorization mixins.",
+      "reason": "BuildRequest specifies Internet Identity auth only and does not request an admin-token-based access control system or initialization via URL secret parameters.",
+      "evidence": [
+        "backend/main.mo (truncated)",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Footer attribution to an external site (caffeine.ai).",
+      "reason": "No requirement requests this attribution/link in the UI.",
+      "evidence": [
+        "frontend/src/components/layout/Footer.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/auth/AuthGate.tsx",
+    "frontend/src/components/auth/LoginButton.tsx",
+    "frontend/src/components/auth/SignInPrompt.tsx",
+    "frontend/src/components/feedback/ErrorAlert.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/Header.tsx",
+    "frontend/src/components/listings/BrowseControls.tsx",
+    "frontend/src/components/listings/ListingCard.tsx",
+    "frontend/src/components/listings/ListingForm.tsx",
+    "frontend/src/components/profile/ProfileSetupModal.tsx",
+    "frontend/src/features/listings/listingValidation.ts",
+    "frontend/src/features/listings/listingsFiltering.ts",
+    "frontend/src/features/listings/listingsQueries.ts",
+    "frontend/src/features/profile/profileQueries.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AboutHelpPage.tsx",
+    "frontend/src/pages/BrowseListingsPage.tsx",
+    "frontend/src/pages/CreateListingPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ListingDetailPage.tsx",
+    "frontend/src/pages/MyListingsPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

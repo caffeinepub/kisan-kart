@@ -1,0 +1,316 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T10:04:19.807Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 10,
+    "implemented": 8,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create the core frontend application structure for “Kisan Kart” with primary navigation and pages: Home, Browse Listings, Create Listing, My Listings, and About/Help.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/components/layout/Header.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/BrowseListingsPage.tsx",
+          "frontend/src/pages/CreateListingPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx",
+          "frontend/src/pages/AboutHelpPage.tsx",
+          "frontend/src/pages/ListingDetailPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/components/layout/Header.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/BrowseListingsPage.tsx",
+          "frontend/src/pages/CreateListingPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx",
+          "frontend/src/pages/AboutHelpPage.tsx",
+          "frontend/src/pages/ListingDetailPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Render generated static brand assets (logo and a simple hero banner) from frontend/public/assets/generated and use them in the header and Home page.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/kisan-kart-logo.dim_512x512.png",
+          "frontend/public/assets/generated/kisan-kart-hero.dim_1600x600.png",
+          "frontend/src/components/layout/Header.tsx",
+          "frontend/src/pages/HomePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/kisan-kart-logo.dim_512x512.png",
+          "frontend/public/assets/generated/kisan-kart-hero.dim_1600x600.png",
+          "frontend/src/components/layout/Header.tsx",
+          "frontend/src/pages/HomePage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement a coherent, distinctive visual theme for Kisan Kart (colors, typography, spacing, components) and apply it consistently across all pages.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/components/layout/Header.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/components/layout/Header.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Implement backend data model and APIs to support marketplace listings, including creating, reading, updating, and deleting listings. Each listing must include: id, title, description, category, price (number), unit (text), location (text), images (optional URLs or asset references), owner (principal), createdAt, updatedAt, and status (active/inactive).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Connect the frontend to the backend APIs to enable end-to-end listing workflows: create listing form submission, browse listings, view listing details, and manage the current user’s listings (edit/deactivate).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/listings/listingsApi.ts",
+          "frontend/src/features/listings/listingsQueries.ts",
+          "frontend/src/pages/BrowseListingsPage.tsx",
+          "frontend/src/pages/ListingDetailPage.tsx",
+          "frontend/src/pages/CreateListingPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx",
+          "frontend/src/components/listings/ListingCard.tsx",
+          "frontend/src/components/listings/ListingForm.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/listings/listingsQueries.ts",
+          "frontend/src/pages/BrowseListingsPage.tsx",
+          "frontend/src/pages/ListingDetailPage.tsx",
+          "frontend/src/pages/CreateListingPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx",
+          "frontend/src/components/listings/ListingCard.tsx",
+          "frontend/src/components/listings/ListingForm.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add browsing utilities on the frontend: search by keyword (title/description), filter by category, and sort by newest and price (low-to-high / high-to-low).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/listings/listingsFiltering.ts",
+          "frontend/src/pages/BrowseListingsPage.tsx",
+          "frontend/src/components/listings/BrowseControls.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/listings/listingsFiltering.ts",
+          "frontend/src/pages/BrowseListingsPage.tsx",
+          "frontend/src/components/listings/BrowseControls.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Implement authentication using Internet Identity to identify the listing owner and to gate access to Create Listing and My Listings pages (prompt to sign in when not authenticated).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/auth/LoginButton.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
+          "frontend/src/components/auth/SignInPrompt.tsx",
+          "frontend/src/components/profile/ProfileSetupModal.tsx",
+          "frontend/src/features/profile/profileQueries.ts",
+          "frontend/src/components/layout/Header.tsx",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/pages/CreateListingPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/auth/LoginButton.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
+          "frontend/src/components/auth/SignInPrompt.tsx",
+          "frontend/src/components/profile/ProfileSetupModal.tsx",
+          "frontend/src/features/profile/profileQueries.ts",
+          "frontend/src/components/layout/Header.tsx",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/pages/CreateListingPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx",
+          "frontend/src/pages/MyListingsPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add a listing detail page that includes a “Contact” section showing seller-provided contact text (e.g., phone/WhatsApp text field) stored in the listing, without integrating external messaging APIs.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/listings/ListingForm.tsx",
+          "frontend/src/pages/ListingDetailPage.tsx",
+          "frontend/src/components/listings/ListingCard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/listings/ListingForm.tsx",
+          "frontend/src/pages/ListingDetailPage.tsx",
+          "frontend/src/components/listings/ListingCard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add basic client-side and backend-side validation for listing creation/editing (required fields, price >= 0, length limits) and display clear inline error messages in English.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/listings/listingValidation.ts",
+          "frontend/src/components/listings/ListingForm.tsx",
+          "frontend/src/features/listings/listingsQueries.ts",
+          "frontend/src/components/feedback/ErrorAlert.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/listings/listingValidation.ts",
+          "frontend/src/components/listings/ListingForm.tsx",
+          "frontend/src/features/listings/listingsQueries.ts",
+          "frontend/src/components/feedback/ErrorAlert.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add seed/sample data support for local development so the Browse Listings page can display a few example listings when running locally (without requiring manual entry every time).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/authorization/MixinAuthorization.mo",
+    "backend/authorization/access-control.mo",
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/kisan-kart-hero.dim_1600x600.png",
+    "frontend/public/assets/generated/kisan-kart-logo.dim_512x512.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/auth/AuthGate.tsx",
+    "frontend/src/components/auth/LoginButton.tsx",
+    "frontend/src/components/auth/SignInPrompt.tsx",
+    "frontend/src/components/feedback/ErrorAlert.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/Header.tsx",
+    "frontend/src/components/listings/BrowseControls.tsx",
+    "frontend/src/components/listings/ListingCard.tsx",
+    "frontend/src/components/listings/ListingForm.tsx",
+    "frontend/src/components/profile/ProfileSetupModal.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/features/listings/listingValidation.ts",
+    "frontend/src/features/listings/listingsFiltering.ts",
+    "frontend/src/features/listings/listingsQueries.ts",
+    "frontend/src/features/profile/profileQueries.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AboutHelpPage.tsx",
+    "frontend/src/pages/BrowseListingsPage.tsx",
+    "frontend/src/pages/CreateListingPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ListingDetailPage.tsx",
+    "frontend/src/pages/MyListingsPage.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

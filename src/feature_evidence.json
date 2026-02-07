@@ -1,0 +1,191 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-the-core-frontend-application-structure-for-kisan-kart-with-primary-navigation-and-pages-home-browse-listings-create-listing-my-listings-and-about-help",
+      "featureTitle": "Create the core frontend application structure for “Kisan Kart” with primary navigation and pages: Home, Browse Listings, Create Listing, My Listings, and About/Help.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/AboutHelpPage.tsx",
+        "frontend/src/pages/BrowseListingsPage.tsx",
+        "frontend/src/pages/CreateListingPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ListingDetailPage.tsx",
+        "frontend/src/pages/MyListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-coherent-distinctive-visual-theme-for-kisan-kart-colors-typography-spacing-components-and-apply-it-consistently-across-all-pages",
+      "featureTitle": "Implement a coherent, distinctive visual theme for Kisan Kart (colors, typography, spacing, components) and apply it consistently across all pages.",
+      "files": [
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-connect-the-frontend-to-the-backend-apis-to-enable-end-to-end-listing-workflows-create-listing-form-submission-browse-listings-view-listing-details-and-manage-the-current-user-s-listings-edit-deactivate",
+      "featureTitle": "Connect the frontend to the backend APIs to enable end-to-end listing workflows: create listing form submission, browse listings, view listing details, and manage the current user’s listings (edit/deactivate).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/listings/ListingCard.tsx",
+        "frontend/src/components/listings/ListingForm.tsx",
+        "frontend/src/features/listings/listingsQueries.ts",
+        "frontend/src/pages/BrowseListingsPage.tsx",
+        "frontend/src/pages/CreateListingPage.tsx",
+        "frontend/src/pages/ListingDetailPage.tsx",
+        "frontend/src/pages/MyListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-browsing-utilities-on-the-frontend-search-by-keyword-title-description-filter-by-category-and-sort-by-newest-and-price-low-to-high-high-to-low",
+      "featureTitle": "Add browsing utilities on the frontend: search by keyword (title/description), filter by category, and sort by newest and price (low-to-high / high-to-low).",
+      "files": [
+        "frontend/src/components/listings/BrowseControls.tsx",
+        "frontend/src/features/listings/listingsFiltering.ts",
+        "frontend/src/pages/BrowseListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-authentication-using-internet-identity-to-identify-the-listing-owner-and-to-gate-access-to-create-listing-and-my-listings-pages-prompt-to-sign-in-when-not-authenticated",
+      "featureTitle": "Implement authentication using Internet Identity to identify the listing owner and to gate access to Create Listing and My Listings pages (prompt to sign in when not authenticated).",
+      "files": [
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/components/auth/LoginButton.tsx",
+        "frontend/src/components/auth/SignInPrompt.tsx",
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/components/profile/ProfileSetupModal.tsx",
+        "frontend/src/features/profile/profileQueries.ts",
+        "frontend/src/pages/CreateListingPage.tsx",
+        "frontend/src/pages/MyListingsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-listing-detail-page-that-includes-a-contact-section-showing-seller-provided-contact-text-e-g-phone-whatsapp-text-field-stored-in-the-listing-without-integrating-external-messaging-apis",
+      "featureTitle": "Add a listing detail page that includes a “Contact” section showing seller-provided contact text (e.g., phone/WhatsApp text field) stored in the listing, without integrating external messaging APIs.",
+      "files": [
+        "frontend/src/components/listings/ListingCard.tsx",
+        "frontend/src/components/listings/ListingForm.tsx",
+        "frontend/src/pages/ListingDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-basic-client-side-and-backend-side-validation-for-listing-creation-editing-required-fields-price-0-length-limits-and-display-clear-inline-error-messages-in-english",
+      "featureTitle": "Add basic client-side and backend-side validation for listing creation/editing (required fields, price >= 0, length limits) and display clear inline error messages in English.",
+      "files": [
+        "frontend/src/components/feedback/ErrorAlert.tsx",
+        "frontend/src/components/listings/ListingForm.tsx",
+        "frontend/src/features/listings/listingValidation.ts",
+        "frontend/src/features/listings/listingsQueries.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-generated-static-brand-assets-logo-and-a-simple-hero-banner-from-frontend-public-assets-generated-and-use-them-in-the-header-and-home-page",
+      "featureTitle": "Render generated static brand assets (logo and a simple hero banner) from frontend/public/assets/generated and use them in the header and Home page.",
+      "files": [
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

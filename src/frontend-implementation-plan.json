@@ -1,0 +1,326 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Kisan Kart — Farmer Marketplace MVP (Frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create the core frontend structure with primary navigation and required pages (Home, Browse Listings, Create Listing, My Listings, About/Help).",
+      "acceptanceCriteria": [
+        "App name “Kisan Kart” is visible in the header and page titles.",
+        "Users can navigate between Home, Browse Listings, Create Listing, My Listings, and About/Help without broken links.",
+        "All user-facing text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the main app shell with routing and primary navigation for Home, Browse Listings, Create Listing, My Listings, and About/Help (and wire routes so they are reachable)."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "create",
+          "description": "Create a shared layout that renders the header (branding + nav) and wraps routed pages consistently."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "create",
+          "description": "Create the header with the “Kisan Kart” brand text, primary navigation links, and space for auth controls; use shadcn-ui components (e.g., Button) for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the Home page content area (English copy) and wire it into the router."
+        },
+        {
+          "path": "frontend/src/pages/BrowseListingsPage.tsx",
+          "operation": "create",
+          "description": "Create the Browse Listings page scaffold (list container + controls region) and wire it into the router."
+        },
+        {
+          "path": "frontend/src/pages/CreateListingPage.tsx",
+          "operation": "create",
+          "description": "Create the Create Listing page scaffold (form container) and wire it into the router."
+        },
+        {
+          "path": "frontend/src/pages/MyListingsPage.tsx",
+          "operation": "create",
+          "description": "Create the My Listings page scaffold (user listings container) and wire it into the router."
+        },
+        {
+          "path": "frontend/src/pages/AboutHelpPage.tsx",
+          "operation": "create",
+          "description": "Create the About/Help page with basic guidance and wire it into the router."
+        },
+        {
+          "path": "frontend/src/pages/ListingDetailPage.tsx",
+          "operation": "create",
+          "description": "Create a Listing Detail page and wire it into the router so Browse Listings can navigate to it (required for end-to-end workflow)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement and apply a cohesive, distinctive Kisan Kart visual theme (earthy palette, typography, spacing) across all pages.",
+      "acceptanceCriteria": [
+        "Theme is consistent across header, buttons, inputs, cards, and page layouts.",
+        "Theme does not rely on blue/purple as the primary brand palette.",
+        "UI is readable and usable on both mobile and desktop sizes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global styles and shadcn/tailwind CSS variables for an earthy brand palette (greens/browns), typography, and consistent spacing; ensure responsive base styles."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions if needed to support the Kisan Kart brand (e.g., container/typography tweaks) while keeping primary palette non-blue/purple."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Apply consistent page layout structure (responsive container, spacing, and background) so the theme is uniform across all routes."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Apply themed styling to header, navigation states, and buttons using shadcn-ui components where appropriate. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Connect the frontend to backend capabilities for listings using React Query to enable create, browse, details, and manage-my-listings flows with loading/error states.",
+      "acceptanceCriteria": [
+        "A user can create a listing from the Create Listing page and see it appear in Browse Listings.",
+        "A user can open a listing detail view from Browse Listings.",
+        "My Listings shows only listings created by the current user and allows editing/deactivation.",
+        "Frontend uses React Query for fetch/mutation flows with loading and error states."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/listings/listingsApi.ts",
+          "operation": "create",
+          "description": "Create a typed listings API wrapper around the backend actor methods (create, read active, read by id, read by owner, update, deactivate) to centralize calls used by React Query."
+        },
+        {
+          "path": "frontend/src/features/listings/listingsQueries.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for listings (useActiveListings, useListing, useMyListings, create/update/deactivate mutations) with consistent loading/error handling."
+        },
+        {
+          "path": "frontend/src/pages/BrowseListingsPage.tsx",
+          "operation": "modify",
+          "description": "Wire Browse Listings to React Query (active listings), render loading/error/empty states, and enable navigation to Listing Detail when a card is clicked; use shadcn-ui components (Card, Button) for listing cards. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ListingDetailPage.tsx",
+          "operation": "modify",
+          "description": "Fetch and display a single listing by id via React Query with loading/error states; include ownership-aware actions if applicable (e.g., show inactive indicator)."
+        },
+        {
+          "path": "frontend/src/pages/CreateListingPage.tsx",
+          "operation": "modify",
+          "description": "Wire Create Listing form submission to a React Query mutation and navigate/refresh relevant queries so the new listing appears in Browse Listings; show submission loading/error states."
+        },
+        {
+          "path": "frontend/src/pages/MyListingsPage.tsx",
+          "operation": "modify",
+          "description": "Wire My Listings to fetch listings by current principal (via identity) and provide edit + deactivate actions using React Query mutations with loading/error states."
+        },
+        {
+          "path": "frontend/src/components/listings/ListingCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable listing card component used in Browse Listings and My Listings; use shadcn-ui primitives (Card, Badge, Button) for consistent visuals. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/listings/ListingForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable Listing form component that supports both create and edit modes, used by Create Listing and My Listings edit flow; use shadcn-ui form inputs/buttons for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure the Listing Detail route is registered and that navigation from Browse Listings to details is supported (route wiring completeness)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add Browse Listings utilities: keyword search, category filter, and sorting (newest, price low-to-high/high-to-low) with safe state handling.",
+      "acceptanceCriteria": [
+        "Browse Listings supports keyword search, category filtering, and sorting controls.",
+        "Controls update the visible results and have an empty-state message when no results match.",
+        "State changes do not cause UI crashes and show appropriate loading indicators."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/listings/listingsFiltering.ts",
+          "operation": "create",
+          "description": "Add pure utility functions to filter and sort listings in-memory (keyword match over title/description, category filter, newest/price sorting) to keep UI logic clean."
+        },
+        {
+          "path": "frontend/src/pages/BrowseListingsPage.tsx",
+          "operation": "modify",
+          "description": "Add UI controls for search, category selection, and sorting; apply filtering/sorting to the fetched listings; show empty-state messaging and keep results responsive; use shadcn-ui Input/Select components. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/listings/BrowseControls.tsx",
+          "operation": "create",
+          "description": "Create a dedicated controls component (search/filter/sort) used by Browse Listings to keep state and layout organized; use shadcn-ui Input/Select. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement Internet Identity authentication to gate Create Listing and My Listings, prompt sign-in when unauthenticated, and reflect login/logout in the UI.",
+      "acceptanceCriteria": [
+        "Unauthenticated users can browse listings but are prompted to sign in for Create Listing and My Listings.",
+        "Authenticated principal is used when creating listings and determining ownership in My Listings.",
+        "Sign in and sign out actions update the UI state correctly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/LoginButton.tsx",
+          "operation": "create",
+          "description": "Add a login/logout button using the existing useInternetIdentity hook and React Query cache clearing on logout, per the selected authorization component guidance. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/AuthGate.tsx",
+          "operation": "create",
+          "description": "Create an auth gate wrapper to protect Create Listing and My Listings pages (renders a sign-in prompt when unauthenticated; renders children when authenticated)."
+        },
+        {
+          "path": "frontend/src/components/auth/SignInPrompt.tsx",
+          "operation": "create",
+          "description": "Create a reusable English sign-in prompt UI for gated pages; use shadcn-ui Button for call-to-action. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/profile/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Implement first-login user profile setup (ask for a display name) using backend profile methods and React Query to avoid showing principal IDs; use shadcn-ui Dialog/Input/Button. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/profile/profileQueries.ts",
+          "operation": "create",
+          "description": "Add React Query hooks for getCallerUserProfile/saveCallerUserProfile and expose derived state to prevent profile setup modal flash, per selected authorization component guidance. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Wire LoginButton into the header and show the signed-in user’s profile name when available (avoid displaying principal id). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Wire ProfileSetupModal so it appears only when authenticated and the current user profile is missing (without flashing during actor initialization)."
+        },
+        {
+          "path": "frontend/src/pages/CreateListingPage.tsx",
+          "operation": "modify",
+          "description": "Wrap Create Listing content with AuthGate so unauthenticated users are prompted to sign in (browse remains public)."
+        },
+        {
+          "path": "frontend/src/pages/MyListingsPage.tsx",
+          "operation": "modify",
+          "description": "Wrap My Listings content with AuthGate so unauthenticated users are prompted to sign in."
+        },
+        {
+          "path": "frontend/src/pages/MyListingsPage.tsx",
+          "operation": "modify",
+          "description": "Use the authenticated principal (from useInternetIdentity identity) to determine which listings are “mine” and to drive owner-only UI actions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add an optional seller contact field in create/edit listing and display it in Listing Detail without external messaging integrations.",
+      "acceptanceCriteria": [
+        "Create/Edit listing includes an optional contact field saved with the listing.",
+        "Listing detail page displays the contact field when provided, otherwise hides it or shows 'Not provided'.",
+        "No external messaging, SMS, WhatsApp, or chat integration is implemented."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/listings/ListingForm.tsx",
+          "operation": "modify",
+          "description": "Add an optional contact information field to the form and include it in the payload sent to backend create/update calls; use shadcn-ui Input/Textarea components. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ListingDetailPage.tsx",
+          "operation": "modify",
+          "description": "Render a Contact section that displays the listing’s contactInfo when present; otherwise show an English 'Not provided' message; ensure no external messaging links/integrations are added."
+        },
+        {
+          "path": "frontend/src/components/listings/ListingCard.tsx",
+          "operation": "modify",
+          "description": "Optionally surface a small 'Contact available' indicator (non-interactive) to improve discoverability without adding any external integration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add client-side validation for listing create/edit and render clear inline English errors; handle backend validation errors gracefully in the UI.",
+      "acceptanceCriteria": [
+        "Required fields prevent submission and show inline error messages.",
+        "Backend rejects invalid payloads and returns errors that the UI renders clearly.",
+        "Price cannot be negative; overly long text fields are rejected or constrained."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/listings/listingValidation.ts",
+          "operation": "create",
+          "description": "Create client-side validation helpers for ListingInput (required fields, price >= 0, basic length limits) and return field-level error messages in English."
+        },
+        {
+          "path": "frontend/src/components/listings/ListingForm.tsx",
+          "operation": "modify",
+          "description": "Integrate validation helpers, block submission when invalid, and render inline field errors; constrain inputs (e.g., min=0 for price) and show clear English messages; use shadcn-ui form primitives (Input/Textarea) for consistent styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/listings/listingsQueries.ts",
+          "operation": "modify",
+          "description": "Standardize mutation error handling by mapping backend error messages to user-friendly English messages that can be displayed near the form or as a page-level alert."
+        },
+        {
+          "path": "frontend/src/components/feedback/ErrorAlert.tsx",
+          "operation": "create",
+          "description": "Create a reusable error alert component to show backend/client validation errors consistently; use shadcn-ui Alert styles/components if available. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Render generated static brand assets (logo and hero banner) from frontend/public/assets/generated and use them in the header and Home page.",
+      "acceptanceCriteria": [
+        "Generated images are stored under frontend/public/assets/generated.",
+        "Header uses the logo asset.",
+        "Home page includes the hero banner asset and maintains responsive layout."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/kisan-kart-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated logo asset at the exact required path so it can be referenced by the header branding."
+        },
+        {
+          "path": "frontend/public/assets/generated/kisan-kart-hero.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add the generated hero banner asset at the exact required path so it can be referenced by the Home page hero section."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Render the brand logo image from frontend/public/assets/generated/kisan-kart-logo.dim_512x512.png alongside the 'Kisan Kart' header text, ensuring responsive sizing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add a responsive hero section that renders frontend/public/assets/generated/kisan-kart-hero.dim_1600x600.png and introduces the marketplace value proposition in English."
+        }
+      ]
+    }
+  ]
+}
